@@ -18,4 +18,7 @@ public class MainActivity extends AppCompatActivity {
                     .commitNow();
         }
     }
+    protected void someMethod(){
+
+    }
 }

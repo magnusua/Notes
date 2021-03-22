@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.kugot.R;
 
-public class MainFragment extends Fragment {
+public class  MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
 

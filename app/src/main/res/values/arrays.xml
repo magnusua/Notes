@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notes">
-        <item>First</item>
-        <item>Second</item>
-        <item>Third</item>
+        <item>First Note</item>
+        <item>Second Note</item>
+        <item>Third Note</item>
     </string-array>
+    <string-array name="notesContent">
+        <item>First Note Content</item>
+        <item>Second Note Content</item>
+        <item>Third Note Content</item>
+    </string-array>
+
 </resources>

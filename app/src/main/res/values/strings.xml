@@ -9,4 +9,8 @@
     <string name="third_note_content">Content of the third note</string>
     <string name="note_title">Node title</string>
     <string name="note_content">Note content</string>
+
+    <string name="hello_blank_fragment1">Hello blank fragment 1</string>
+    <string name="hello_blank_fragment2">Hello blank fragment 2</string>
+    <string name="hello_blank_fragment3">Hello blank fragment 3</string>
 </resources>

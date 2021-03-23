@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/frament_menu_item_1" android:title="Hello from Fragment1" android:orderInCategory="100" />
+</menu>

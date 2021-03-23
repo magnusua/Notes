@@ -25,6 +25,16 @@ public class ListNotesFragment extends Fragment {
     private boolean isLandscape;
     private Note[] notes;
     private Note currentNote;
+    private int mCurrentNoteIndex = -1;
+
+    public ListNotesFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,10 +65,12 @@ public class ListNotesFragment extends Fragment {
                 linearView.addView(firstTextView);
                 linearView.addView(secondTextView);
                 firstTextView.setPadding(0, 22, 0, 0);
-                firstTextView.setOnClickListener(v -> {
+                View.OnClickListener onClickListener = v -> {
                     currentNote = note;
-                    showNote(currentNote);
-                });
+                    showOrientatedNote(currentNote);
+                };
+                firstTextView.setOnClickListener(onClickListener);
+                secondTextView.setOnClickListener(onClickListener);
             }
         }
     }
@@ -76,29 +88,29 @@ public class ListNotesFragment extends Fragment {
         if (savedInstanceState != null) {
             currentNote = savedInstanceState.getParcelable(NoteFragment.CURRENT_NOTE);
         } else {
-            currentNote = notes[0];
+            currentNote = notes[notes.length-1];
         }
         if (isLandscape) {
-            showLandNote(currentNote);
+            showLandscapeNote(currentNote);
         }
     }
 
-    private void showNote(Note currentNote) {
+    private void showOrientatedNote(Note currentNote) {
         if (isLandscape) {
-            showLandNote(currentNote);
+            showLandscapeNote(currentNote);
         } else {
-            showPortNote(currentNote);
+            showPortraitNote(currentNote);
         }
     }
 
-    private void showLandNote(Note currentNote) {
+    private void showLandscapeNote(Note currentNote) {
         NoteFragment fragment = NoteFragment.newInstance(currentNote);
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.note_layout, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
     }
 
-    private void showPortNote(Note currentNote) {
+    private void showPortraitNote(Note currentNote) {
         Intent intent = new Intent(getActivity(), NoteActivity.class);
         intent.putExtra(NoteFragment.CURRENT_NOTE, currentNote);
         startActivity(intent);

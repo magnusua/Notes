@@ -2,14 +2,11 @@ package com.kugot;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -38,9 +35,10 @@ public class NoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.note_fragment, container, false);
+        TextView dateOfCreationText = view.findViewById(R.id.note_date_of_creation);
         TextView titleText = view.findViewById(R.id.note_title);
         TextView noteContentText = view.findViewById(R.id.note_content);
-        TextView dateOfCreationText = view.findViewById(R.id.note_date_of_creation);
+
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy", Locale.getDefault());
         dateOfCreationText.setText(String.format("%s", formatter.format(note.getCreationDate().getTime())));
         titleText.setText(note.getTitle());

@@ -5,10 +5,23 @@
         <item>Second Note</item>
         <item>Third Note</item>
     </string-array>
+
     <string-array name="notesContent">
         <item>First Note Content</item>
         <item>Second Note Content</item>
         <item>Third Note Content</item>
     </string-array>
+
+    <string-array name="fruit_names">
+        <item>Apple</item>
+        <item>Avocado</item>
+        <item>Lemon</item>
+    </string-array>
+
+    <integer-array name="fruit_imgs">
+        <item>@drawable/apple</item>
+        <item>@drawable/avocado</item>
+        <item>@drawable/lemon</item>
+    </integer-array>
 
 </resources>

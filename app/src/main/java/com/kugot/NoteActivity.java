@@ -4,8 +4,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 public class NoteActivity extends AppCompatActivity {
+//    public static final String KEY_NOTE_INDEX = "NoteActivity.note_idx";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,9 @@ public class NoteActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             NoteFragment noteFragment = new NoteFragment();
             noteFragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, noteFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.note_fragment_container, noteFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .commit();
         }
     }
 }

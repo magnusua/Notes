@@ -5,9 +5,11 @@ import android.os.Parcelable;
 
 import java.util.Calendar;
 
+/**
+ * @author Zurbaevi Nika
+ */
 public class Note implements Parcelable {
     public static final Creator<Note> CREATOR = new Creator<Note>() {
-
         @Override
         public Note createFromParcel(Parcel in) {
             return new Note(in);

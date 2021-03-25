@@ -1,4 +1,4 @@
-package com.kugot;
+package com.kugot.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
+import com.kugot.Note;
+import com.kugot.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

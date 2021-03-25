@@ -23,16 +23,19 @@ public class Note implements Parcelable {
     private String title;
     private String content;
     private Calendar creationDate;
+    private int color;
 
-    public Note(String title, String content, Calendar creationDate) {
+    public Note(String title, String content, Calendar creationDate, int color) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.color = color;
     }
 
     protected Note(Parcel in) {
         title = in.readString();
         content = in.readString();
+        color = in.readInt();
         creationDate = (Calendar) in.readSerializable();
     }
 
@@ -40,6 +43,7 @@ public class Note implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
         dest.writeString(content);
+        dest.writeInt(color);
         dest.writeSerializable(creationDate);
     }
 
@@ -70,5 +74,9 @@ public class Note implements Parcelable {
 
     public void setCreationDate(Calendar creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public int getColor() {
+        return color;
     }
 }

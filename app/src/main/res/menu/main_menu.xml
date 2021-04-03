@@ -10,6 +10,13 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_add_note"
+        android:icon="@drawable/note_add_24"
+        android:orderInCategory="2"
+        android:title="@string/menu_add_note"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menu_sort"
         android:icon="@drawable/sort_24"
         android:orderInCategory="2"

@@ -7,6 +7,7 @@
     app:cardCornerRadius="@dimen/card_corner_radius"
     app:cardElevation="@dimen/card_elevation">
 
+
     <LinearLayout
         android:id="@+id/element_of_recycler_view"
         android:layout_width="match_parent"

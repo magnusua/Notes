@@ -3,12 +3,9 @@ package com.kugot;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Calendar;
-
-/**
- * @author Zurbaevi Nika
- */
 public class Note implements Parcelable {
+    private String title;
+    private String content;
     public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
         public Note createFromParcel(Parcel in) {
@@ -20,12 +17,10 @@ public class Note implements Parcelable {
             return new Note[size];
         }
     };
-    private String title;
-    private String content;
-    private Calendar creationDate;
     private int color;
+    private String creationDate;
 
-    public Note(String title, String content, Calendar creationDate, int color) {
+    public Note(String title, String content, String creationDate, int color) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
@@ -35,16 +30,8 @@ public class Note implements Parcelable {
     protected Note(Parcel in) {
         title = in.readString();
         content = in.readString();
+        creationDate = in.readString();
         color = in.readInt();
-        creationDate = (Calendar) in.readSerializable();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(title);
-        dest.writeString(content);
-        dest.writeInt(color);
-        dest.writeSerializable(creationDate);
     }
 
     @Override
@@ -52,31 +39,31 @@ public class Note implements Parcelable {
         return 0;
     }
 
-    public String getTitle() {
-        return title;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(content);
+        dest.writeString(creationDate);
+        dest.writeInt(color);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Calendar getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
-    }
-
-    public void setCreationDate(Calendar creationDate) {
-        this.creationDate = creationDate;
     }
 
     public int getColor() {
         return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

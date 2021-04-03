@@ -91,12 +91,7 @@ public class ListOfNotesFragment extends Fragment {
 
         adapter = new NotesAdapter(data, this);
         adapter.setOnItemClickListener((position, note) -> {
-            navigation.addFragment(NoteFragment.newInstance(data.getNote(position)),
-                    true);
-            publisher.subscribe(note1 -> {
-                data.changeNote(position, note1);
-                adapter.notifyItemChanged(position);
-            });
+            editItem(position);
         });
 
         recyclerView.setAdapter(adapter);
@@ -141,6 +136,9 @@ public class ListOfNotesFragment extends Fragment {
             adapter.notifyItemRemoved(position);
             return true;
         }
+        if (item.getItemId() == R.id.menu_edit_note) {
+            editItem(position);
+        }
         return super.onContextItemSelected(item);
     }
 
@@ -157,5 +155,14 @@ public class ListOfNotesFragment extends Fragment {
             return true;
         });
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    private void editItem(int position){
+        navigation.addFragment(NoteFragment.newInstance(data.getNote(position)),
+                true);
+        publisher.subscribe(note1 -> {
+            data.editNote(position, note1);
+            adapter.notifyItemChanged(position);
+        });
     }
 }

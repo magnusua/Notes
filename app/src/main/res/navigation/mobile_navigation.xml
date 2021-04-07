@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_notes">
+
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.kugot.ui.notes.NoteListFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_note_list">
+        <action android:id="@+id/action_list_to_note"
+            app:destination="@id/nav_note"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_list_to_edit"
+            app:destination="@id/nav_edit_note"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.kugot.ui.about.AboutFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_note"
+        android:label="@string/note"
+        android:name="com.kugot.ui.notes.NoteFragment"
+        tools:layout="@layout/fragment_note" >
+        <action android:id="@+id/action_note_to_edit"
+            app:destination="@id/nav_edit_note"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_edit_note"
+        android:label="@string/note"
+        android:name="com.kugot.ui.notes.NoteEditFragment"
+        tools:layout="@layout/fragment_note" >
+        <argument
+            android:name="noteId"
+            app:argType="string"
+            android:defaultValue="-1" />
+    </fragment>
+
+
+</navigation>

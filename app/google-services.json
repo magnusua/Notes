@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931220285554",
+    "project_id": "notes-b1b86-magnusua",
+    "storage_bucket": "notes-b1b86-magnusua.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931220285554:android:7bbfe13c37b04c65b53aeb",
+        "android_client_info": {
+          "package_name": "com.kugot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931220285554-hr8c0m1vbvmff818mldikd88ghlro5nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL1B_LukueIEoJpKkutKXyIVjHLy4zNvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931220285554-hr8c0m1vbvmff818mldikd88ghlro5nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

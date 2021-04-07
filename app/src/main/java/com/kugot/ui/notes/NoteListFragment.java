@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ public class NoteListFragment extends Fragment {
     private final NotesAdapter mAdapter = new NotesAdapter();
 
     public NoteListFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -60,7 +62,7 @@ public class NoteListFragment extends Fragment {
         mAdapter.setNotes(mNoteViewModel.getNotes().getValue().getList());
 
         mNoteViewModel.getNotes().observe(getViewLifecycleOwner(), notes -> {
-            android.util.Log.e("Note", "notes changed: " + notes.getList().toString() );
+            android.util.Log.e("Note", "notes changed: " + notes.getList().toString());
             notes.applyChange(mAdapter);
         });
 
@@ -96,8 +98,18 @@ public class NoteListFragment extends Fragment {
             }
         } else if (item.getItemId() == R.id.action_delete) {
             if (mNoteViewModel.getNoteToEdit().getValue() != null) {
-                mNoteViewModel.deleteNote(mNoteViewModel.getNoteToEdit().getValue());
-                mNoteViewModel.setNoteToEdit(null);
+                new AlertDialog.Builder(requireActivity())
+                        .setTitle(R.string.delete_confirmation)
+                        .setMessage("You are about delete the note: \n" + mNoteViewModel.getNoteToEdit().getValue().getShortName() + "\nYou won't be able to revert this.")
+                        .setPositiveButton(R.string.delete, (dialog, which) -> {
+                            mNoteViewModel.deleteNote(mNoteViewModel.getNoteToEdit().getValue());
+                            mNoteViewModel.setNoteToEdit(null);
+                        })
+                        .setNegativeButton(R.string.cancel, ((dialog, which) -> {
+                            dialog.cancel();
+                            mNoteViewModel.setNoteToEdit(null);
+                        }))
+                        .show();
                 return true;
             } else {
                 return false;
@@ -106,5 +118,4 @@ public class NoteListFragment extends Fragment {
             return super.onContextItemSelected(item);
         }
     }
-
 }

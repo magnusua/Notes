@@ -10,7 +10,7 @@ public class Note implements Parcelable {
     private String description;
     private long dateTime;
 
-    public Note(){
+    public Note() {
     }
 
     public Note(String title, String description, long dateTime) {
@@ -26,6 +26,7 @@ public class Note implements Parcelable {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -106,5 +107,11 @@ public class Note implements Parcelable {
                 ", description='" + description + '\'' +
                 ", dateTime=" + dateTime +
                 '}';
+    }
+
+    public String getShortName() {
+        String shortName = getTitle().isEmpty() ? getDescription() : getTitle();
+        if (shortName.length() <= 50) return shortName;
+        return shortName.substring(0, 50) + "...";
     }
 }
